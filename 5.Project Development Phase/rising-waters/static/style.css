@@ -1,0 +1,180 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(160deg, #0f2744 0%, #1a5276 45%, #2e86ab 100%);
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+header {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.25rem;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.model-info {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: #0f2744;
+}
+
+.hint,
+.placeholder {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+input {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #ccd6e0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: 2px solid #2e86ab;
+  border-color: #2e86ab;
+}
+
+button {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #0f2744;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1a5276;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.alert-error {
+  background: #fdecea;
+  color: #b71c1c;
+  border: 1px solid #f5c6cb;
+}
+
+.result {
+  padding: 1.25rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.risk-label {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.probability {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.advisory {
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+.risk-high {
+  background: #fdecea;
+  border-left: 5px solid #c0392b;
+}
+
+.risk-moderate {
+  background: #fff8e1;
+  border-left: 5px solid #f39c12;
+}
+
+.risk-low {
+  background: #e8f5e9;
+  border-left: 5px solid #27ae60;
+}
+
+.scenarios h3 {
+  font-size: 1rem;
+  color: #0f2744;
+  margin-bottom: 0.5rem;
+}
+
+.scenarios ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #444;
+  line-height: 1.6;
+  font-size: 0.92rem;
+}

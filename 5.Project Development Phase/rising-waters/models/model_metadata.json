@@ -1,0 +1,18 @@
+{
+  "best_model": "XGBoost",
+  "accuracy_percent": 97.0,
+  "feature_columns": [
+    "annual_rainfall_mm",
+    "monsoon_rainfall_mm",
+    "pre_monsoon_rainfall_mm",
+    "post_monsoon_rainfall_mm",
+    "cloud_visibility_km"
+  ],
+  "uses_scaler": false,
+  "all_results": {
+    "Decision Tree": 95.4,
+    "Random Forest": 96.6,
+    "KNN": 97.0,
+    "XGBoost": 97.0
+  }
+}

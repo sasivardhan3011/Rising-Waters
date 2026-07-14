@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rising Waters — Flood Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Rising Waters</h1>
+      <p class="subtitle">ML-powered flood risk prediction for disaster management teams</p>
+      {% if metadata %}
+      <p class="model-info">
+        Active model: <strong>{{ metadata.best_model }}</strong>
+        · Test accuracy: <strong>{{ metadata.accuracy_percent }}%</strong>
+      </p>
+      {% endif %}
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <main class="layout">
+      <section class="card form-card">
+        <h2>Enter Weather Readings</h2>
+        <p class="hint">Provide current meteorological data for a flood-prone district.</p>
+
+        <form method="POST">
+          <label>
+            Annual Rainfall (mm)
+            <input type="number" step="0.1" name="annual_rainfall_mm"
+                   value="{{ form_values.annual_rainfall_mm }}" required>
+          </label>
+
+          <label>
+            Monsoon Rainfall (mm)
+            <input type="number" step="0.1" name="monsoon_rainfall_mm"
+                   value="{{ form_values.monsoon_rainfall_mm }}" required>
+          </label>
+
+          <label>
+            Pre-Monsoon Rainfall (mm)
+            <input type="number" step="0.1" name="pre_monsoon_rainfall_mm"
+                   value="{{ form_values.pre_monsoon_rainfall_mm }}" required>
+          </label>
+
+          <label>
+            Post-Monsoon Rainfall (mm)
+            <input type="number" step="0.1" name="post_monsoon_rainfall_mm"
+                   value="{{ form_values.post_monsoon_rainfall_mm }}" required>
+          </label>
+
+          <label>
+            Cloud Visibility (km)
+            <input type="number" step="0.01" name="cloud_visibility_km"
+                   value="{{ form_values.cloud_visibility_km }}" required>
+          </label>
+
+          <button type="submit">Predict Flood Risk</button>
+        </form>
+      </section>
+
+      <section class="card result-card">
+        <h2>Prediction Result</h2>
+        {% if result %}
+          <div class="result risk-{{ result.risk_level | lower }}">
+            <span class="risk-label">{{ result.risk_level }} Risk</span>
+            <p class="classification">
+              {% if result.prediction == 1 %}
+                Flood event predicted
+              {% else %}
+                No flood predicted
+              {% endif %}
+            </p>
+            <p class="probability">Flood probability: {{ result.probability }}%</p>
+            <p class="advisory">{{ result.advisory }}</p>
+          </div>
+        {% else %}
+          <p class="placeholder">
+            Submit weather readings to receive an instant flood risk classification.
+          </p>
+        {% endif %}
+
+        <div class="scenarios">
+          <h3>Use Cases</h3>
+          <ul>
+            <li><strong>Early warning:</strong> Issue evacuation advisories hours in advance.</li>
+            <li><strong>Resource allocation:</strong> Prioritise relief deployment across regions.</li>
+            <li><strong>Model validation:</strong> Compare predictions against historical events.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
